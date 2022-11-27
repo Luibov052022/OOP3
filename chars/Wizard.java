@@ -1,7 +1,5 @@
 package chars;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Wizard extends BaseHero {
@@ -28,25 +26,11 @@ public class Wizard extends BaseHero {
 
   @Override
   public void step() {
-    //ArrayList<BaseHero> temp = new ArrayList<>();
-    //temp.addAll(this.gang);
-    //Collections.sort(temp, new MyComparator());
-    //System.out.println(this.gang);
-    //System.out.println(temp);
-    //for (int i = 0; i < this.gang.size(); i++) {
-    //  if (this.gang.get(i).equals(temp.get(0))) {
-    //    this.gang.get(i).health -= this.damage[0];
-    //    System.out.println(this.gang.get(i));
-    //    break;
-    //   }
-    // }
-    //}
     double persent = 100;
     BaseHero injured = null;
     for (BaseHero i : this.gang) {
       if (i.maxHealth > i.health && persent > i.health / i.maxHealth) {
         injured = i;
-       // System.out.println(injured + " " + this.gang);
         persent = i.health / i.maxHealth;
       }
     }

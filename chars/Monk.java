@@ -1,7 +1,5 @@
 package chars;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Monk extends BaseHero {
@@ -35,7 +33,6 @@ public class Monk extends BaseHero {
     for (BaseHero i : this.gang) {
       if (i.maxHealth > i.health && persent > i.health / i.maxHealth) {
         injured = i;
-       // System.out.println(injured);
         persent = i.health / i.maxHealth;
       }
     }
