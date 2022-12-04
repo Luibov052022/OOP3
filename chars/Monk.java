@@ -6,13 +6,14 @@ public class Monk extends BaseHero {
 
   private boolean magic;
 
-  public Monk(List<BaseHero> gang, int x, int y) {
+  public Monk(List<BaseHero> gang, List<BaseHero> enemies, int x, int y) {
     super("Stand", 17, 12, 30, 9, new int[] { -5, -5 });
     magic = true;
     super.gang = gang;
     super.position = new Vector2(x, y);
     this.health = 20;
     this.maxHealth = 30;
+    this.enemies = enemies;
   }
 
   public String getName() {

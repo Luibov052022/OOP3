@@ -6,11 +6,12 @@ public class Wizard extends BaseHero {
 
   private boolean magic;
 
-  public Wizard(List<BaseHero> gang, int x, int y) {
+  public Wizard(List<BaseHero> gang, List<BaseHero> enemies, int x, int y) {
     super("Stand", 17, 12, 30, 9, new int[] { -5, -5 });
     magic = true;
     super.gang = gang;
     super.position = new Vector2(x, y);
+    this.enemies = enemies;
   }
 
   @Override

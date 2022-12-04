@@ -13,4 +13,7 @@ public class Vector2 {
     if (x == opposit.x && y == opposit.y) return true;
     return false;
   }
+  public double getDistance(Vector2 opposit){
+    return Math.sqrt(Math.pow(this.x-opposit.x,2) + Math.pow(this.y-opposit.y,2));
+  }
 }
