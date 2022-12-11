@@ -41,7 +41,11 @@ public class Game {
         }
       }
     );
-    sorting.forEach(BaseHero::step);
+    sorting.forEach(unit -> {
+      if (!unit.getState().equals("Dead")) {
+        unit.step();
+      }
+    });
   }
 
   private static void init() {

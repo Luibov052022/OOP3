@@ -1,6 +1,7 @@
 package chars;
 
 import java.util.List;
+import java.util.Random;
 
 public class Monk extends BaseHero {
 
@@ -14,6 +15,7 @@ public class Monk extends BaseHero {
     this.health = 20;
     this.maxHealth = 30;
     this.enemies = enemies;
+    count = new Random().nextInt(1, 2);
   }
 
   public String getName() {

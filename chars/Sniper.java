@@ -1,6 +1,7 @@
 package chars;
 
 import java.util.List;
+import java.util.Random;
 
 public class Sniper extends BaseHero {
 
@@ -12,6 +13,7 @@ public class Sniper extends BaseHero {
     super.gang = gang;
     super.position = new Vector2(x, y);
     this.enemies = enemies;
+    count = new Random().nextInt(5, 8);
   }
 
   public String getName() {

@@ -1,6 +1,7 @@
 package chars;
 
 import java.util.List;
+import java.util.Random;
 
 public abstract class BaseHero implements HeroInterface {
 
@@ -13,8 +14,8 @@ public abstract class BaseHero implements HeroInterface {
   protected int[] damage;
   protected List<BaseHero> gang;
   protected List<BaseHero> enemies;
-
   protected Vector2 position;
+  protected int count;
 
   public BaseHero(
     String state,
@@ -30,6 +31,7 @@ public abstract class BaseHero implements HeroInterface {
     this.state = state;
     this.protect = protect;
     this.speed = speed;
+   // count = new Random().nextInt(1, 21);
   }
 
   public Vector2 getPosition() {
@@ -46,19 +48,29 @@ public abstract class BaseHero implements HeroInterface {
 
   public float calcDamage(BaseHero enemy) {
     if (enemy.protect - this.attack == 0) {
-      return (this.damage[0] + this.damage[1]) / 2.0f;
+      return ((this.damage[0] + this.damage[1]) / 2.0f) * count;
     }
     if (enemy.protect - this.attack < 0) {
-      return this.damage[1];
+      return this.damage[1] * count;
     }
-    return this.damage[0];
+    return this.damage[0] * count;
   }
 
   public void getHit(float damage) {
     health -= damage;
-    if (health <= 0) {
+    double tmpHealth = (count - 1) * maxHealth + health;
+    tmpHealth -= damage;
+    if (tmpHealth <= 0) {
       health = 0;
+      count = 0;
       state = "Dead";
+    } else {
+      count = (int) (tmpHealth / maxHealth);
+      health = maxHealth;
+      if (tmpHealth % maxHealth > 0) {
+        count++;
+        health = (float) (tmpHealth % maxHealth);
+      }
     }
   }
 
@@ -79,7 +91,9 @@ public abstract class BaseHero implements HeroInterface {
       " Health: " +
       health +
       " Speed: " +
-      speed
+      speed +
+      " Count: " +
+      count
     );
   }
 
